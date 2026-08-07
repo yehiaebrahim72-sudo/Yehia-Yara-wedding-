@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f8efe8">
+<title>Yehia & Yara</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Cairo:wght@400;500;600&display=swap');
+:root{--ivory:#fffaf5;--mint:#b9cdbd;--mintDark:#60766b;--pink:#efa2aa;--pinkSoft:#fbe2e2;--text:#5d6c64;--line:#eaded5}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#eee5dd}
+body{font-family:Cairo,Arial,sans-serif;color:var(--text)}
+.app{height:100svh;max-width:520px;margin:auto;background:var(--ivory);position:relative;overflow:hidden;box-shadow:0 0 50px #0002}
+.page{position:absolute;inset:0;padding:48px 27px 100px;display:none;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 10%,#fff 0,#fffaf5 48%,#f5e9e0 100%);animation:in .55s ease}
+.page.active{display:flex}
+.inner{width:100%;max-width:430px}
+@keyframes in{from{opacity:0;transform:translateX(25px)}to{opacity:1;transform:none}}
+.script{font-family:"Cormorant Garamond",serif;font-style:italic}
+.names{font:italic 68px/0.78 "Cormorant Garamond",serif;color:var(--mintDark)}
+.amp{font:32px "Cormorant Garamond",serif;color:var(--pink);margin:17px}
+.kicker{font-size:10px;letter-spacing:3px;color:#98a39d;text-transform:uppercase}
+h1,h2{font:italic 46px/1 "Cormorant Garamond",serif;color:var(--mintDark);font-weight:500;margin:10px 0 20px}
+h1{font-size:52px}
+p{font-size:16px;line-height:1.9;margin:12px 0}
+.date{font:25px "Cormorant Garamond",serif;color:#d78791;letter-spacing:1px;margin:16px}
+.flower{font-size:34px;letter-spacing:8px;margin-bottom:25px}
+.card{background:#fffdf9;border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:0 15px 40px #6f5d4d12}
+.photo{width:100%;height:390px;object-fit:cover;object-position:center 43%;border-radius:23px;box-shadow:0 15px 35px #6f5d4d25}
+.btn{display:inline-block;border:0;border-radius:999px;padding:13px 26px;background:var(--pink);color:white;text-decoration:none;font-family:Cairo;font-size:14px;box-shadow:0 8px 25px #e6a7ae55;cursor:pointer}
+.mint{background:var(--mint)}
+.envelope{width:250px;height:170px;background:#f6bdc1;border-radius:10px;margin:0 auto 25px;position:relative;box-shadow:0 14px 28px #806c6020}
+.envelope:before{content:"";position:absolute;left:0;top:0;border-left:125px solid transparent;border-right:125px solid transparent;border-top:85px solid #ffe1e1}
+.letter{position:absolute;z-index:2;left:32px;top:-18px;width:186px;height:102px;background:#fffdf9;border-radius:5px;padding:12px;font:28px "Cormorant Garamond",serif;color:var(--mintDark);box-shadow:0 5px 15px #0001}
+.count{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.count div{background:white;border:1px solid var(--line);border-radius:14px;padding:12px 3px}
+.num{display:block;font:27px "Cormorant Garamond",serif;color:#d78791}.lab{font-size:8px;letter-spacing:1px;color:#929d97}
+.info{text-align:left;display:grid;gap:10px}
+.row{background:#f8f1eb;border-radius:15px;padding:14px}.row b{display:block;font-size:10px;letter-spacing:1px;color:#a08d7d;margin-bottom:3px}
+.map{height:180px;border-radius:20px;background:linear-gradient(135deg,#dce8df,#edf2ea);display:flex;align-items:center;justify-content:center;font-size:60px;margin-bottom:15px}
+.rsvp{display:grid;gap:11px;margin-top:18px}
+.nav{position:absolute;z-index:20;bottom:22px;left:20px;right:20px;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
+.nav button{pointer-events:auto;border:0;background:#fffdf9;color:var(--mintDark);width:46px;height:46px;border-radius:50%;box-shadow:0 5px 20px #0002;cursor:pointer;font-size:20px}
+.progress{position:absolute;z-index:20;top:20px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:2px;color:#9aa49f}
+.music{position:absolute;z-index:21;top:17px;right:18px;width:38px;height:38px;border:0;border-radius:50%;background:#fffdf9;color:var(--pink);box-shadow:0 4px 16px #0002;cursor:pointer;font-size:17px}
+.small{font-size:11px;color:#98a09b}
+.qr{width:130px;height:130px;border-radius:10px;margin:8px auto}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="progress" id="progress">1 / 10</div>
+<button class="music" id="music" aria-label="Music">♫</button>
+<audio id="song" src="./ana-men-gherak.mp3" loop preload="auto"></audio>
+
+<section class="page active">
+<div class="inner">
+<div class="flower">🌿 🌸 🌿</div>
+<div class="names">Yehia</div><div class="amp">&amp;</div><div class="names">Yara</div>
+<div class="kicker" style="margin-top:25px">ONE LOVE · ONE STORY</div>
+<div class="date">01 · 10 · 2026</div>
+<button class="btn" onclick="nextPage()">Open Invitation ♡</button>
+<div style="margin-top:12px"><button class="btn mint" onclick="startMusic()">♫ Start Music</button></div>
+</div>
+</section>
+
+<section class="page">
+<div class="inner">
+<div class="envelope"><div class="letter">Yehia<br>&amp;<br>Yara ♡</div></div>
+<div class="kicker">YOU'RE INVITED</div>
+<h2>Our Special Day</h2>
+<p>We would love to celebrate this beautiful day with you.</p>
+</div>
+</section>
+
+<section class="page">
+<div class="inner">
+<div class="kicker">OUR STORY</div>
+<h2>Our Story</h2>
+<img class="photo" src="./couple.jpg" alt="Yehia and Yara">
+<p>Two hearts. One story.<br>And a lifetime to go. ♡</p>
+</div>
+</section>
+
+<section class="page">
+<div class="inner">
+<div class="kicker">SAVE THE DATE</div>
+<h2>October 1, 2026</h2>
+<div class="card"><div style="font-size:48px">💍</div><p><b>Thursday</b><br>Save the date for our big day.</p></div>
+</div>
+</section>
+
+<section class="page">
+<div class="inner">
+<div class="kicker">COUNTDOWN</div>
+<h2>Until We Say "I Do"</h2>
+<div class="card"><div class="count">
+<div><span class="num" id="d">--</span><span class="lab">DAYS</span></div>
+<div><span class="num" id="h">--</span><span class="lab">HOURS</span></div>
+<div><span class="num" id="m">--</span><span class="lab">MINUTES</span></div>
+<div><span class="num" id="s">--</span><span class="lab">SECONDS</span></div>
+</div></div>
+</div>
+</section>
+
+<section class="page">
+<div class="inner">
+<div class="kicker">THE CELEBRATION</div>
+<h2>Wedding Details</h2>
+<div class="card info">
+<div class="row"><b>DATE</b>Thursday, October 1, 2026</div>
+<div class="row"><b>TIME</b>7:00 PM</div>
+<div class="row"><b>VENUE</b>Dahab Hall — First International Road from 45</div>
+</div>
+</div>
+</section>
+
+<section class="page">
+<div class="inner">
+<div class="kicker">LOCATION</div>
+<h2>See You There</h2>
+<div class="map">📍</div>
+<p><b>Dahab Hall</b><br>First International Road from 45</p>
+<a class="btn mint" target="_blank" href="https://maps.app.goo.gl/UCpLdQSSxcTuYGx38">Open in Maps ↗</a>
+</div>
+</section>
+
+<section class="page">
+<div class="inner">
+<div class="kicker">OUR SONG</div>
+<h2>Ana Men Gherak ♫</h2>
+<div class="card">
+<p>Our song for our special day.</p>
+<button class="btn" onclick="toggleSong()">Play / Pause ♫</button>
+<p class="small" id="songStatus">Music will start when you open the invitation.</p>
+</div>
+</div>
+</section>
+
+<section class="page">
+<div class="inner">
+<div class="kicker">RSVP</div>
+<h2>Will You Join Us?</h2>
+<p>We can't wait to celebrate with you.</p>
+<div class="rsvp">
+<button class="btn mint" onclick="reply('Yes! We will be there 🤍')">Yes, we'll be there ♡</button>
+<button class="btn" onclick="reply('Sorry, we cannot make it 🤍')">Sorry, we can't make it</button>
+</div>
+<p id="reply" class="small"></p>
+</div>
+</section>
+
+<section class="page">
+<div class="inner">
+<div class="flower">🌸 ♡ 🌿</div>
+<div class="kicker">THANK YOU</div>
+<h2>See You There!</h2>
+<p>Thank you for being part of our story.<br>We can't wait to celebrate with you.</p>
+<div class="names" style="font-size:43px;margin-top:25px">Yehia &amp; Yara</div>
+<div class="date">01 · 10 · 2026</div>
+</div>
+</section>
+
+<div class="nav">
+<button id="prev" onclick="prevPage()">‹</button>
+<button id="next" onclick="nextPage()">›</button>
+</div>
+</div>
+
+<script>
+let current=0;
+const pages=[...document.querySelectorAll('.page')];
+const progress=document.getElementById('progress');
+const song=document.getElementById('song');
+function show(n){
+ current=Math.max(0,Math.min(pages.length-1,n));
+ pages.forEach((p,i)=>p.classList.toggle('active',i===current));
+ progress.textContent=(current+1)+' / '+pages.length;
+ document.getElementById('prev').style.visibility=current===0?'hidden':'visible';
+ document.getElementById('next').style.visibility=current===pages.length-1?'hidden':'visible';
+}
+function startMusic(){
+  song.muted=false;
+  const p=song.play();
+  if(p){
+    p.then(()=>document.getElementById('songStatus').textContent='Now playing ♫')
+     .catch(()=>document.getElementById('songStatus').textContent='Tap ♫ to start the music');
+  }
+}
+function nextPage(){startMusic();show(current+1)}
+function prevPage(){show(current-1)}
+function toggleSong(){
+ if(song.paused){song.play();document.getElementById('songStatus').textContent='Now playing ♫'}
+ else{song.pause();document.getElementById('songStatus').textContent='Paused'}
+}
+document.getElementById('music').onclick=toggleSong;
+function reply(t){document.getElementById('reply').textContent=t}
+const target=new Date("2026-10-01T19:00:00+03:00").getTime();
+function tick(){
+ let x=Math.max(0,target-Date.now());
+ document.getElementById('d').textContent=Math.floor(x/86400000);
+ document.getElementById('h').textContent=Math.floor(x%86400000/3600000);
+ document.getElementById('m').textContent=Math.floor(x%3600000/60000);
+ document.getElementById('s').textContent=Math.floor(x%60000/1000);
+}
+tick();setInterval(tick,1000);
+show(0);
+</script>
+</body>
+</html>
