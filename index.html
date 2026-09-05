@@ -3,208 +3,777 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#f8efe8">
-<title>Yehia & Yara</title>
+<meta name="theme-color" content="#f8eee9">
+<title>Yehia & Yara — Wedding Invitation</title>
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Cairo:wght@400;500;600&display=swap');
-:root{--ivory:#fffaf5;--mint:#b9cdbd;--mintDark:#60766b;--pink:#efa2aa;--pinkSoft:#fbe2e2;--text:#5d6c64;--line:#eaded5}
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Montserrat:wght@400;500;600&display=swap');
+
+:root{
+--cream:#fbf2ec;
+--paper:#fffaf7;
+--pink:#e9a6a4;
+--gold:#b78945;
+--brown:#4b3b32;
+--soft:#806e63
+}
+
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#eee5dd}
-body{font-family:Cairo,Arial,sans-serif;color:var(--text)}
-.app{height:100svh;max-width:520px;margin:auto;background:var(--ivory);position:relative;overflow:hidden;box-shadow:0 0 50px #0002}
-.page{position:absolute;inset:0;padding:48px 27px 100px;display:none;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 10%,#fff 0,#fffaf5 48%,#f5e9e0 100%);animation:in .55s ease}
-.page.active{display:flex}
-.inner{width:100%;max-width:430px}
-@keyframes in{from{opacity:0;transform:translateX(25px)}to{opacity:1;transform:none}}
-.script{font-family:"Cormorant Garamond",serif;font-style:italic}
-.names{font:italic 68px/0.78 "Cormorant Garamond",serif;color:var(--mintDark)}
-.amp{font:32px "Cormorant Garamond",serif;color:var(--pink);margin:17px}
-.kicker{font-size:10px;letter-spacing:3px;color:#98a39d;text-transform:uppercase}
-h1,h2{font:italic 46px/1 "Cormorant Garamond",serif;color:var(--mintDark);font-weight:500;margin:10px 0 20px}
-h1{font-size:52px}
-p{font-size:16px;line-height:1.9;margin:12px 0}
-.date{font:25px "Cormorant Garamond",serif;color:#d78791;letter-spacing:1px;margin:16px}
-.flower{font-size:34px;letter-spacing:8px;margin-bottom:25px}
-.card{background:#fffdf9;border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:0 15px 40px #6f5d4d12}
-.photo{width:100%;height:390px;object-fit:cover;object-position:center 43%;border-radius:23px;box-shadow:0 15px 35px #6f5d4d25}
-.btn{display:inline-block;border:0;border-radius:999px;padding:13px 26px;background:var(--pink);color:white;text-decoration:none;font-family:Cairo;font-size:14px;box-shadow:0 8px 25px #e6a7ae55;cursor:pointer}
-.mint{background:var(--mint)}
-.envelope{width:250px;height:170px;background:#f6bdc1;border-radius:10px;margin:0 auto 25px;position:relative;box-shadow:0 14px 28px #806c6020}
-.envelope:before{content:"";position:absolute;left:0;top:0;border-left:125px solid transparent;border-right:125px solid transparent;border-top:85px solid #ffe1e1}
-.letter{position:absolute;z-index:2;left:32px;top:-18px;width:186px;height:102px;background:#fffdf9;border-radius:5px;padding:12px;font:28px "Cormorant Garamond",serif;color:var(--mintDark);box-shadow:0 5px 15px #0001}
-.count{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
-.count div{background:white;border:1px solid var(--line);border-radius:14px;padding:12px 3px}
-.num{display:block;font:27px "Cormorant Garamond",serif;color:#d78791}.lab{font-size:8px;letter-spacing:1px;color:#929d97}
-.info{text-align:left;display:grid;gap:10px}
-.row{background:#f8f1eb;border-radius:15px;padding:14px}.row b{display:block;font-size:10px;letter-spacing:1px;color:#a08d7d;margin-bottom:3px}
-.map{height:180px;border-radius:20px;background:linear-gradient(135deg,#dce8df,#edf2ea);display:flex;align-items:center;justify-content:center;font-size:60px;margin-bottom:15px}
-.rsvp{display:grid;gap:11px;margin-top:18px}
-.nav{position:absolute;z-index:20;bottom:22px;left:20px;right:20px;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
-.nav button{pointer-events:auto;border:0;background:#fffdf9;color:var(--mintDark);width:46px;height:46px;border-radius:50%;box-shadow:0 5px 20px #0002;cursor:pointer;font-size:20px}
-.progress{position:absolute;z-index:20;top:20px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:2px;color:#9aa49f}
-.music{position:absolute;z-index:21;top:17px;right:18px;width:38px;height:38px;border:0;border-radius:50%;background:#fffdf9;color:var(--pink);box-shadow:0 4px 16px #0002;cursor:pointer;font-size:17px}
-.small{font-size:11px;color:#98a09b}
-.qr{width:130px;height:130px;border-radius:10px;margin:8px auto}
+html{scroll-behavior:smooth}
+
+body{
+margin:0;
+background:var(--cream);
+color:var(--brown);
+font-family:Montserrat,Arial,sans-serif;
+overflow-x:hidden
+}
+
+.page{
+min-height:100svh;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+overflow:hidden
+}
+
+#cover{
+padding:18px;
+background:
+radial-gradient(circle at 8% 30%,#f0c9c522,transparent 25%),
+radial-gradient(circle at 94% 70%,#e8b3ad22,transparent 25%),
+var(--cream)
+}
+
+.card{
+width:min(92vw,430px);
+height:min(68svh,590px);
+position:relative;
+background:linear-gradient(150deg,#fffdfb,#f7e7e1);
+box-shadow:0 22px 45px #6e51421f;
+border:1px solid #b7894560
+}
+
+.card:after{
+content:"";
+position:absolute;
+inset:12px;
+border:1px solid #b7894550
+}
+
+.corner{
+position:absolute;
+color:#d99f9a;
+font-size:38px;
+z-index:2;
+opacity:.7
+}
+
+.a{top:22px;left:24px}
+.b{top:22px;right:24px}
+.c{bottom:22px;left:24px}
+.d{bottom:22px;right:24px}
+
+.covertext{
+position:absolute;
+inset:0;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+text-align:center;
+z-index:3
+}
+
+.script{
+font-family:"Cormorant Garamond",serif;
+font-style:italic;
+font-size:clamp(52px,15vw,78px);
+line-height:.8
+}
+
+.script span{color:var(--pink)}
+
+.date{
+margin-top:25px;
+color:var(--pink);
+font-size:12px;
+letter-spacing:.24em
+}
+
+.line{
+height:1px;
+width:145px;
+background:#b7894570;
+margin:13px
+}
+
+.seal{
+position:absolute;
+z-index:5;
+left:50%;
+bottom:21%;
+transform:translateX(-50%);
+width:92px;
+height:92px;
+border-radius:50%;
+border:2px solid #c99a55;
+background:radial-gradient(circle,#efd09a,#b98339);
+box-shadow:0 8px 17px #6f4b2630,inset 0 0 0 5px #efd39f;
+color:#4c3824;
+letter-spacing:.12em;
+font-size:14px;
+font-weight:600;
+cursor:pointer
+}
+
+.hint{
+position:absolute;
+bottom:-47px;
+left:50%;
+transform:translateX(-50%);
+white-space:nowrap;
+font-size:10px;
+letter-spacing:.17em;
+color:var(--soft)
+}
+
+.opening .card{
+animation:open 1.05s ease forwards
+}
+
+@keyframes open{
+to{
+transform:scale(1.035);
+opacity:0
+}
+}
+
+#site{display:none}
+
+.section{
+min-height:100svh;
+padding:65px 22px 100px;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+overflow:hidden
+}
+
+.section:before{
+content:"";
+position:absolute;
+inset:0;
+background:
+radial-gradient(ellipse at 5% 50%,#efc8c628,transparent 30%),
+radial-gradient(ellipse at 95% 45%,#efc8c628,transparent 30%)
+}
+
+.inner{
+width:min(100%,460px);
+text-align:center;
+position:relative;
+z-index:1
+}
+
+.frame{
+display:inline-block;
+position:relative
+}
+
+.frame:after{
+content:"";
+position:absolute;
+inset:-11px;
+border:1px solid #b7894560;
+border-radius:49% 49% 8% 8%
+}
+
+.photo{
+width:min(78vw,330px);
+aspect-ratio:4/5;
+object-fit:cover;
+border-radius:48% 48% 8% 8%;
+border:7px solid #fffaf7;
+box-shadow:0 20px 40px #654c3b20
+}
+
+.kicker{
+font-size:9px;
+letter-spacing:.28em;
+color:#866c5c;
+text-transform:uppercase;
+margin-top:18px
+}
+
+h1,h2{
+font-family:"Cormorant Garamond",serif;
+font-weight:500
+}
+
+h1{
+font-size:clamp(54px,16vw,82px);
+line-height:.8;
+margin:12px 0 4px
+}
+
+h2{
+font-size:48px;
+line-height:.9;
+margin:17px 0 24px
+}
+
+.pink{color:var(--pink)}
+
+.datebig{
+color:var(--pink);
+font-size:12px;
+letter-spacing:.24em;
+margin:18px 0
+}
+
+.orn{
+color:var(--gold);
+font-size:17px;
+letter-spacing:.35em;
+margin:18px 0
+}
+
+.copy{
+font-size:11px;
+line-height:2;
+color:var(--soft);
+letter-spacing:.07em
+}
+
+.details{
+display:grid;
+gap:12px;
+text-align:left;
+width:min(100%,380px);
+margin:22px auto
+}
+
+.detail{
+padding:15px 18px;
+background:#fffaf7bb;
+border:1px solid #b7894533;
+border-radius:17px
+}
+
+.detail b{
+display:block;
+font-size:11px;
+letter-spacing:.08em
+}
+
+.detail span{
+display:block;
+margin-top:5px;
+font-size:10px;
+color:var(--soft)
+}
+
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+min-height:45px;
+padding:0 23px;
+border-radius:30px;
+background:linear-gradient(#efb2ae,#df9794);
+color:white;
+text-decoration:none;
+font-size:10px;
+letter-spacing:.13em;
+box-shadow:0 9px 18px #b66e6b26
+}
+
+.count{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:7px
+}
+
+.box{
+padding:13px 2px;
+border:1px solid #e5b5b0;
+border-radius:14px;
+background:#fffaf7a8
+}
+
+.box b{
+display:block;
+color:var(--pink);
+font-family:"Cormorant Garamond",serif;
+font-size:32px;
+font-weight:500
+}
+
+.box span{
+font-size:7px;
+letter-spacing:.1em
+}
+
+.bigphoto{
+width:min(82vw,350px);
+border-radius:25px;
+box-shadow:0 20px 40px #654c3b20
+}
+
+.music{
+position:fixed;
+z-index:20;
+bottom:9px;
+left:50%;
+transform:translateX(-50%);
+width:calc(100% - 18px);
+max-width:460px;
+background:#fffaf7ee;
+backdrop-filter:blur(12px);
+border-top:1px solid #d99c9a;
+padding:8px 11px;
+display:flex;
+align-items:center;
+gap:9px
+}
+
+.music button{
+border:0;
+background:none;
+color:#674d3d;
+font-size:16px;
+width:30px;
+height:30px
+}
+
+.track{
+flex:1;
+min-width:0
+}
+
+.track b{
+display:block;
+font-size:9px
+}
+
+.track span{
+font-size:7px;
+color:var(--soft)
+}
+
+.bar{
+height:2px;
+background:#ead7d1;
+margin-top:5px
+}
+
+.bar i{
+display:block;
+height:100%;
+width:0;
+background:var(--pink)
+}
+
+.fade{
+opacity:0;
+transform:translateY(20px);
+transition:.8s ease
+}
+
+.fade.show{
+opacity:1;
+transform:none
+}
 </style>
 </head>
+
 <body>
-<div class="app">
-<div class="progress" id="progress">1 / 10</div>
-<button class="music" id="music" aria-label="Music">♫</button>
-<audio id="song" src="./ana-men-gherak.mp3" loop preload="auto"></audio>
 
-<section class="page active">
-<div class="inner">
-<div class="flower">🌿 🌸 🌿</div>
-<div class="names">Yehia</div><div class="amp">&amp;</div><div class="names">Yara</div>
-<div class="kicker" style="margin-top:25px">ONE LOVE · ONE STORY</div>
-<div class="date">01 · 10 · 2026</div>
-<button class="btn" onclick="nextPage()">Open Invitation ♡</button>
-<div style="margin-top:12px"><button class="btn mint" onclick="startMusic()">♫ Start Music</button></div>
-</div>
-</section>
+<section id="cover" class="page">
 
-<section class="page">
-<div class="inner">
-<div class="envelope"><div class="letter">Yehia<br>&amp;<br>Yara ♡</div></div>
-<div class="kicker">YOU'RE INVITED</div>
-<h2>Our Special Day</h2>
-<p>We would love to celebrate this beautiful day with you.</p>
-</div>
-</section>
-
-<section class="page">
-<div class="inner">
-<div class="kicker">OUR STORY</div>
-<h2>Our Story</h2>
-<img class="photo" src="./couple.jpg" alt="Yehia and Yara">
-<p>Two hearts. One story.<br>And a lifetime to go. ♡</p>
-</div>
-</section>
-
-<section class="page">
-<div class="inner">
-<div class="kicker">SAVE THE DATE</div>
-<h2>October 1, 2026</h2>
-<div class="card"><div style="font-size:48px">💍</div><p><b>Thursday</b><br>Save the date for our big day.</p></div>
-</div>
-</section>
-
-<section class="page">
-<div class="inner">
-<div class="kicker">COUNTDOWN</div>
-<h2>Until We Say "I Do"</h2>
-<div class="card"><div class="count">
-<div><span class="num" id="d">--</span><span class="lab">DAYS</span></div>
-<div><span class="num" id="h">--</span><span class="lab">HOURS</span></div>
-<div><span class="num" id="m">--</span><span class="lab">MINUTES</span></div>
-<div><span class="num" id="s">--</span><span class="lab">SECONDS</span></div>
-</div></div>
-</div>
-</section>
-
-<section class="page">
-<div class="inner">
-<div class="kicker">THE CELEBRATION</div>
-<h2>Wedding Details</h2>
-<div class="card info">
-<div class="row"><b>DATE</b>Thursday, October 1, 2026</div>
-<div class="row"><b>TIME</b>7:00 PM</div>
-<div class="row"><b>VENUE</b>Dahab Hall — First International Road from 45</div>
-</div>
-</div>
-</section>
-
-<section class="page">
-<div class="inner">
-<div class="kicker">LOCATION</div>
-<h2>See You There</h2>
-<div class="map">📍</div>
-<p><b>Dahab Hall</b><br>First International Road from 45</p>
-<a class="btn mint" target="_blank" href="https://maps.app.goo.gl/UCpLdQSSxcTuYGx38">Open in Maps ↗</a>
-</div>
-</section>
-
-<section class="page">
-<div class="inner">
-<div class="kicker">OUR SONG</div>
-<h2>Ana Men Gherak ♫</h2>
 <div class="card">
-<p>Our song for our special day.</p>
-<button class="btn" onclick="toggleSong()">Play / Pause ♫</button>
-<p class="small" id="songStatus">Music will start when you open the invitation.</p>
+
+<span class="corner a">❀</span>
+<span class="corner b">❀</span>
+<span class="corner c">❀</span>
+<span class="corner d">❀</span>
+
+<div class="covertext">
+
+<div class="script">
+Yehia <span>&amp;</span> Yara
 </div>
+
+<div class="line"></div>
+
+<div class="date">
+1 OCTOBER 2026
 </div>
+
+</div>
+
+<button class="seal" id="open">
+OPEN<br>
+<small>✦</small>
+</button>
+
+</div>
+
+<div class="hint">
+TAP OPEN TO BEGIN
+</div>
+
 </section>
 
-<section class="page">
-<div class="inner">
-<div class="kicker">RSVP</div>
-<h2>Will You Join Us?</h2>
-<p>We can't wait to celebrate with you.</p>
-<div class="rsvp">
-<button class="btn mint" onclick="reply('Yes! We will be there 🤍')">Yes, we'll be there ♡</button>
-<button class="btn" onclick="reply('Sorry, we cannot make it 🤍')">Sorry, we can't make it</button>
+
+<main id="site">
+
+<section class="section">
+
+<div class="inner fade">
+
+<div class="frame">
+<img class="photo" src="couple.png" alt="Wedding invitation">
 </div>
-<p id="reply" class="small"></p>
+
+<div class="kicker">
+You are invited
 </div>
+
+<h1>
+Yehia <span class="pink">&amp;</span> Yara
+</h1>
+
+<div class="datebig">
+1 OCTOBER 2026
+</div>
+
+<div class="orn">
+✦　✦　✦
+</div>
+
+</div>
+
 </section>
 
-<section class="page">
-<div class="inner">
-<div class="flower">🌸 ♡ 🌿</div>
-<div class="kicker">THANK YOU</div>
-<h2>See You There!</h2>
-<p>Thank you for being part of our story.<br>We can't wait to celebrate with you.</p>
-<div class="names" style="font-size:43px;margin-top:25px">Yehia &amp; Yara</div>
-<div class="date">01 · 10 · 2026</div>
+
+<section class="section">
+
+<div class="inner fade">
+
+<div class="kicker">
+Together with their families
 </div>
+
+<h2>
+Yehia <span class="pink">&amp;</span> Yara
+</h2>
+
+<p class="copy">
+INVITE YOU TO CELEBRATE<br>
+THEIR WEDDING
+</p>
+
+<div class="orn">
+💍
+</div>
+
+</div>
+
 </section>
 
-<div class="nav">
-<button id="prev" onclick="prevPage()">‹</button>
-<button id="next" onclick="nextPage()">›</button>
+
+<section class="section">
+
+<div class="inner fade">
+
+<div class="kicker">
+The celebration
 </div>
+
+<h2>
+Our Special Day
+</h2>
+
+<div class="details">
+
+<div class="detail">
+<b>THURSDAY · 1 OCTOBER 2026</b>
+<span>7:00 PM</span>
 </div>
+
+<div class="detail">
+<b>قاعة دهب</b>
+<span>الطريق الدولي — أول قاعة بعد 45</span>
+</div>
+
+</div>
+
+<a class="btn"
+href="https://maps.app.goo.gl/UCpLdQSSxcTuYGx38"
+target="_blank"
+rel="noopener">
+VIEW LOCATION
+</a>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="inner fade">
+
+<div class="kicker">
+Counting every moment
+</div>
+
+<h2>
+Countdown To Our Big Day
+</h2>
+
+<div class="count">
+
+<div class="box">
+<b id="d">00</b>
+<span>DAYS</span>
+</div>
+
+<div class="box">
+<b id="h">00</b>
+<span>HOURS</span>
+</div>
+
+<div class="box">
+<b id="m">00</b>
+<span>MINUTES</span>
+</div>
+
+<div class="box">
+<b id="s">00</b>
+<span>SECONDS</span>
+</div>
+
+</div>
+
+<div class="orn">
+💍
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="inner fade">
+
+<img class="bigphoto"
+src="couple.png"
+alt="Yehia and Yara">
+
+<div class="orn">
+✦
+</div>
+
+<h2>
+Two hearts,<br>
+one beautiful beginning.
+</h2>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="inner fade">
+
+<div class="kicker">
+With love
+</div>
+
+<h2>
+We Can't Wait<br>
+To Celebrate With You
+</h2>
+
+<div class="datebig">
+YEHIA &amp; YARA · 1 OCTOBER 2026
+</div>
+
+<a class="btn"
+id="replay"
+href="#cover">
+REPLAY INVITATION
+</a>
+
+</div>
+
+</section>
+
+</main>
+
+
+<div class="music" id="music" style="display:none">
+
+<button id="play">▶</button>
+
+<div class="track">
+
+<b>WALA MEEN</b>
+
+<span>
+Wedding soundtrack
+</span>
+
+<div class="bar">
+<i id="bar"></i>
+</div>
+
+</div>
+
+</div>
+
+
+<audio
+id="audio"
+preload="auto"
+loop
+playsinline
+src="wala-meen.mp3">
+</audio>
+
 
 <script>
-let current=0;
-const pages=[...document.querySelectorAll('.page')];
-const progress=document.getElementById('progress');
-const song=document.getElementById('song');
-function show(n){
- current=Math.max(0,Math.min(pages.length-1,n));
- pages.forEach((p,i)=>p.classList.toggle('active',i===current));
- progress.textContent=(current+1)+' / '+pages.length;
- document.getElementById('prev').style.visibility=current===0?'hidden':'visible';
- document.getElementById('next').style.visibility=current===pages.length-1?'hidden':'visible';
+
+const cover=document.getElementById('cover');
+const site=document.getElementById('site');
+const audio=document.getElementById('audio');
+const music=document.getElementById('music');
+const play=document.getElementById('play');
+
+function start(){
+
+audio.play().then(()=>{
+
+play.textContent='❚❚'
+
+}).catch(()=>{
+
+play.textContent='▶'
+
+})
+
 }
-function startMusic(){
-  song.muted=false;
-  const p=song.play();
-  if(p){
-    p.then(()=>document.getElementById('songStatus').textContent='Now playing ♫')
-     .catch(()=>document.getElementById('songStatus').textContent='Tap ♫ to start the music');
-  }
-}
-function nextPage(){startMusic();show(current+1)}
-function prevPage(){show(current-1)}
-function toggleSong(){
- if(song.paused){song.play();document.getElementById('songStatus').textContent='Now playing ♫'}
- else{song.pause();document.getElementById('songStatus').textContent='Paused'}
-}
-document.getElementById('music').onclick=toggleSong;
-function reply(t){document.getElementById('reply').textContent=t}
-const target=new Date("2026-10-01T19:00:00+03:00").getTime();
+
+window.addEventListener('load',start);
+
+document.getElementById('open').onclick=()=>{
+
+cover.classList.add('opening');
+
+start();
+
+setTimeout(()=>{
+
+cover.style.display='none';
+site.style.display='block';
+music.style.display='flex';
+
+document.querySelector('.fade').classList.add('show');
+
+},1050);
+
+};
+
+play.onclick=()=>{
+
+audio.paused
+?
+start()
+:
+(
+audio.pause(),
+play.textContent='▶'
+);
+
+};
+
+audio.ontimeupdate=()=>{
+
+if(audio.duration)
+
+document.getElementById('bar').style.width=
+(audio.currentTime/audio.duration*100)+'%';
+
+};
+
+
+const target=
+new Date('2026-10-01T19:00:00+03:00').getTime();
+
+
 function tick(){
- let x=Math.max(0,target-Date.now());
- document.getElementById('d').textContent=Math.floor(x/86400000);
- document.getElementById('h').textContent=Math.floor(x%86400000/3600000);
- document.getElementById('m').textContent=Math.floor(x%3600000/60000);
- document.getElementById('s').textContent=Math.floor(x%60000/1000);
+
+let x=Math.max(0,target-Date.now());
+
+document.getElementById('d').textContent=
+String(Math.floor(x/86400000)).padStart(2,'0');
+
+document.getElementById('h').textContent=
+String(x%86400000/3600000|0).padStart(2,'0');
+
+document.getElementById('m').textContent=
+String(x%3600000/60000|0).padStart(2,'0');
+
+document.getElementById('s').textContent=
+String(x%60000/1000|0).padStart(2,'0');
+
 }
-tick();setInterval(tick,1000);
-show(0);
+
+tick();
+
+setInterval(tick,1000);
+
+
+const io=new IntersectionObserver(
+
+es=>es.forEach(e=>
+e.isIntersecting &&
+e.target.classList.add('show')
+),
+
+{threshold:.15}
+
+);
+
+document.querySelectorAll('.fade')
+.forEach(x=>io.observe(x));
+
+
+document.getElementById('replay').onclick=e=>{
+
+e.preventDefault();
+
+site.style.display='none';
+cover.style.display='flex';
+
+cover.classList.remove('opening');
+
+music.style.display='none';
+
+window.scrollTo(0,0);
+
+};
+
 </script>
+
 </body>
 </html>
