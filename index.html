@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Yehia & Yara — Wedding Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Marcellus&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- fixed decorative frame, sized/positioned by JS to match its own aspect ratio exactly -->
+<div class="stage" id="stage">
+  <img class="bg-frame" id="bgFrame" src="assets/frame.png" alt="">
+
+  <div class="frame-inner" id="frameInner">
+
+    <div class="progress" id="progress"></div>
+
+    <div class="screens" id="screens">
+
+      <!-- 1 : Opening -->
+      <section class="screen" data-name="opening">
+        <div class="card">
+          <p class="eyebrow">The Wedding Of</p>
+          <h1 class="names">Yehia <span class="amp">&amp;</span> Yara</h1>
+          <p class="date-strip">01 · 10 · 2026</p>
+          <button class="btn-open" id="openBtn">Open Invitation <span class="heart">♡</span></button>
+        </div>
+      </section>
+
+      <!-- 2 : You're Invited -->
+      <section class="screen" data-name="invited">
+        <div class="card">
+          <p class="eyebrow">With Love</p>
+          <h2 class="headline">You're Invited</h2>
+          <p class="body-text">We're getting married — and it won't feel complete without you there.</p>
+        </div>
+      </section>
+
+      <!-- 3 : Our Story -->
+      <section class="screen" data-name="story">
+        <div class="card">
+          <p class="eyebrow">Our Story</p>
+          <div class="photo-frame">
+            <img src="assets/photo.jpg" alt="Yehia and Yara">
+          </div>
+          <p class="body-text">Two hearts, one story — and it's just getting started.</p>
+        </div>
+      </section>
+
+      <!-- 4 : Save The Date -->
+      <section class="screen" data-name="savedate">
+        <div class="card">
+          <p class="eyebrow">Save The Date</p>
+          <h2 class="big-date">October<br>1<span class="year">2026</span></h2>
+        </div>
+      </section>
+
+      <!-- 5 : Countdown -->
+      <section class="screen" data-name="countdown">
+        <div class="card">
+          <p class="eyebrow">Until We Say "I Do"</p>
+          <div class="countdown" id="countdown">
+            <div class="cd-unit"><span id="cd-days">00</span><small>Days</small></div>
+            <div class="cd-unit"><span id="cd-hours">00</span><small>Hours</small></div>
+            <div class="cd-unit"><span id="cd-mins">00</span><small>Min</small></div>
+            <div class="cd-unit"><span id="cd-secs">00</span><small>Sec</small></div>
+          </div>
+          <p class="body-text small">7:00 PM · October 1, 2026</p>
+        </div>
+      </section>
+
+      <!-- 6 : Wedding Details -->
+      <section class="screen" data-name="details">
+        <div class="card">
+          <p class="eyebrow">Wedding Details</p>
+          <div class="details-list">
+            <div class="detail-row"><span class="detail-label">Date</span><span class="detail-value">Oct 1, 2026</span></div>
+            <div class="detail-row"><span class="detail-label">Time</span><span class="detail-value">7:00 PM</span></div>
+            <div class="detail-row"><span class="detail-label">Venue</span><span class="detail-value">Dahab Hall</span></div>
+            <div class="detail-row"><span class="detail-label">Address</span><span class="detail-value">1st Intl. Road, from 45</span></div>
+          </div>
+          <a class="btn-outline" href="https://maps.app.goo.gl/NQWeYUbUUy9oNSHD9" target="_blank" rel="noopener">View Location ↗</a>
+        </div>
+      </section>
+
+      <!-- 7 : Our Song -->
+      <section class="screen" data-name="song">
+        <div class="card">
+          <p class="eyebrow">Our Song</p>
+          <h2 class="headline small-headline">Wala Meen</h2>
+          <button class="btn-play" id="songPlayBtn">
+            <span id="songPlayIcon">▶</span> <span id="songPlayLabel">Play Our Song</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- 8 : RSVP -->
+      <section class="screen" data-name="rsvp">
+        <div class="card">
+          <p class="eyebrow">Kindly Reply</p>
+          <h2 class="headline">Will You Join Us?</h2>
+          <div class="rsvp-buttons">
+            <button class="btn-rsvp yes" id="rsvpYes">Yes, we'll be there</button>
+            <button class="btn-rsvp no" id="rsvpNo">Sorry, can't make it</button>
+          </div>
+          <p class="rsvp-response" id="rsvpResponse"></p>
+        </div>
+      </section>
+
+      <!-- 9 : Final -->
+      <section class="screen" data-name="final">
+        <div class="card">
+          <p class="eyebrow">Thank You</p>
+          <h2 class="headline">See You There <span class="heart">♡</span></h2>
+          <p class="names final-names">Yehia &amp; Yara</p>
+        </div>
+      </section>
+
+    </div>
+
+    <nav class="nav-buttons">
+      <button class="nav-btn" id="backBtn">‹ Back</button>
+      <button class="nav-btn" id="nextBtn">Next ›</button>
+    </nav>
+
+  </div>
+
+  <button class="music-btn" id="musicBtn" aria-label="Toggle music">♫</button>
+
+</div>
+
+<button class="start-music-overlay" id="startMusicOverlay">Start Music ♫</button>
+
+<audio id="bgAudio" src="assets/song.mp3" loop preload="auto"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
